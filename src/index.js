@@ -1,16 +1,16 @@
 const express = require("express");
 const app = express();
-
+const path = require("path");
 const Products = require("./module/Products");
 const Cart = require("./module/cart");
 const Register = require("./module/Registration");
 require("./db/connection");
-
 require("dotenv").config();
 const port = process.env.PORT 
-
 const cors = require("cors");
 
+app.use(express.static(path.join(__dirname ,"./")))
+console.log(path.join(__dirname ,"./client"))
                
 app.use(express.json());
 app.use(cors());
