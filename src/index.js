@@ -5,7 +5,10 @@ const Products = require("./module/Products");
 const Cart = require("./module/cart");
 const Register = require("./module/Registration");
 require("./db/connection");
-require('dotenv').config();
+
+require("dotenv").config();
+const port = process.env.PORT 
+
 const cors = require("cors");
 
                
@@ -27,11 +30,8 @@ app.post("/product" , async (req ,res)=>{
             price: req.body.price
         });
         const x = await value.save();
-        console.log(req.body.name);
         res.send(x);
-    } catch (error) {
-        res.status(400).send();  
-    } 
+    } catch (error) {} 
 })
 
                //   cart
@@ -48,11 +48,8 @@ app.post("/cart" , async (req ,res)=>{
             price: req.body.price
         });
         const Cx = await Cvalue.save();
-        console.log(req.body.name);
         res.send(Cx);
-    } catch (error) {
-        res.status(400).send();  
-    } 
+    } catch (error) {} 
 })
 app.delete('/cart/:id', async (req, res) => {
     const { id } = req.params;
@@ -85,7 +82,6 @@ app.post("/register" , async (req ,res)=>{
             password: req.body.password
         });
         const lx = await lvalue.save();
-        console.log(req.body.name);
         res.send(lx);
     } catch (error) {
         res.status(400).send();  
@@ -94,8 +90,5 @@ app.post("/register" , async (req ,res)=>{
 
 
         // server create 
-app.listen(process.env.PORT  ,()=>{
-    console.log('server listening,.....' , process.env.PORT );
-
-})
+app.listen(port ,()=>{})
 

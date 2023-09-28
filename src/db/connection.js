@@ -6,9 +6,5 @@ const main = async ()=>{
         useUnifiedTopology:true
     }))
 }
-main().then(()=>{
-    console.log("server created to mongodb");
-})
-.catch((e)=>{
-    console.log("server not created to mongodb");
-})
+main().then(()=>{})
+.catch((e)=>{})
